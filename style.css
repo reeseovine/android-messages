@@ -1,0 +1,107 @@
+/* Windowbar styling */
+.windowbar {
+	z-index: 9999;
+}
+/* .windowbar.wb-mac {
+	top: 7px;
+	left: 7px;
+	padding: 0;
+}
+.windowbar.wb-win {
+	top: 0;
+	right: 0;
+} */
+
+body.wb-mac .new-chat-header {
+	margin-left: 48px !important;
+	text-align: center;
+}
+body.wb-mac .new-chat-header .logo {
+	margin: 0 !important;
+	height: 40px;
+	line-height: initial;
+	vertical-align: middle;
+}
+body.wb-mac .new-chat-header .logo-link {
+	margin: 0 !important;
+}
+body.wb-mac mws-header {
+	padding-left: 97px !important;
+}
+body.wb-win mws-header {
+	padding-right: 138px !important;
+}
+
+/* Draggable regions */
+* {
+	-webkit-user-select: none;
+}
+.new-chat-header,
+mw-main-landing,
+mws-header {
+	-webkit-app-region: drag;
+}
+.windowbar-controls,
+a,
+button {
+	-webkit-app-region: no-drag !important;
+}
+
+/* Custom styles */
+html,
+body {
+	background-color: transparent !important;
+	overflow: hidden !important;
+}
+
+
+body:not(.dark-mode) mw-main-nav {
+	background-color: rgba(255,255,255, 0.8) !important;
+	border: none !important;
+}
+
+body:not(.dark-mode) .list-item.selected {
+	background-color: #fff !important;
+}
+
+body:not(.dark-mode) mw-main-landing,
+body:not(.dark-mode) mw-conversation-container,
+body:not(.dark-mode) .container,
+body:not(.dark-mode) mws-header {
+	background-color: #fff !important;
+}
+
+body:not(.dark-mode) mws-header {
+	border-bottom: 1px solid #ddd !important;
+	box-shadow: none !important;
+}
+
+
+body.dark-mode mw-main-nav {
+	background-color: rgba(0,0,0, 0.8) !important;
+}
+
+body.dark-mode mw-main-landing,
+body.dark-mode mw-conversation-container,
+body.dark-mode .container,
+body.dark-mode mws-header {
+	background-color: #111 !important;
+}
+
+body.dark-mode mws-header {
+	border-bottom: 1px solid #333 !important;
+	box-shadow: none !important;
+}
+
+
+.main-nav-header.box-shadow {
+	box-shadow: none !important;
+}
+
+.input-background {
+	background: none !important;
+}
+
+.mat-menu-panel {
+	background-color: #222 !important;
+}

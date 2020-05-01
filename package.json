@@ -1,0 +1,17 @@
+{
+  "name": "android-messages",
+  "version": "0.0.1",
+  "description": "Electron wrapper for Android Messages for Web",
+  "mw_url": "https://messages.google.com/web",
+  "main": "index.js",
+  "dependencies": {
+    "electron": "^8.2.3",
+    "windowbar": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Reese Jacobson <me@katacarbix.xyz> (http://katacarbix.xyz)",
+  "private": true
+}
