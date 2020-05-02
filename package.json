@@ -5,14 +5,84 @@
   "mw_url": "https://messages.google.com/web",
   "main": "index.js",
   "dependencies": {
-    "electron": "^8.2.5",
     "glasstron": "github:AryToNeX/Glasstron",
     "windowbar": "^1.7.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "electron": "^8.2.5",
+    "electron-builder": "^22.6.0"
+  },
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist:win32": "electron-builder build --win",
+    "dist:linux": "electron-builder build --linux",
+    "dist:macos": "electron-builder build --macos",
+    "dist": "electron-builder build -mwl"
   },
   "author": "Reese Jacobson <me@katacarbix.xyz> (http://katacarbix.xyz)",
-  "private": true
+  "private": true,
+  "build": {
+    "appId": "com.google.android.messagesforweb",
+    "productName": "Google Messages",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "icon": "img/icon.ico",
+      "target": [
+        {
+          "target": "msi",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "icon": "img/icon.icns",
+      "target": "zip"
+    },
+    "linux": {
+      "icon": "img/icon.png",
+      "category": "Internet",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "rpm",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "tar.gz",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    }
+  }
 }
