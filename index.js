@@ -1,10 +1,10 @@
 const { app, BrowserWindow } = require('electron');
 // const path = require('path');
-// const Main = require('./main.js');
+const Main = require('./main.js');
 const pak = require('./package.json');
 
-const glasstron = require('./glasstron');
-glasstron.init();
+// const glasstron = require('./glasstron');
+// glasstron.init();
 
 function createWindow(){
 	// Create the browser window.
@@ -15,7 +15,7 @@ function createWindow(){
 		minHeight: 300,
 		title: 'Android Messages',
 		icon: './img/icon.png',
-		frame: (process.platform !== 'linux'),
+		frame: false,
 		transparent: true,
 		backgroundColor: '#00000000',
 		webPreferences: {
@@ -25,18 +25,18 @@ function createWindow(){
 		_package: require('./package.json')
 	});
 	
-	glasstron.update({
-		windows: {
-			blurType: 'acrylic',
-			performanceMode: true
-		},
-		linux: true,
-		macos: {
-			vibrancy: 'fullscreen-ui'
-		}
-	});
+	// glasstron.update(win, {
+	// 	windows: {
+	// 		blurType: 'acrylic',
+	// 		performanceMode: true
+	// 	},
+	// 	linux: true,
+	// 	macos: {
+	// 		vibrancy: 'fullscreen-ui'
+	// 	}
+	// });
 	
-	// new Main(win);
+	new Main(win);
 	
 	// and load the index.html of the app.
 	win.loadURL(pak.mw_url);

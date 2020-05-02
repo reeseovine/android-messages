@@ -16,7 +16,7 @@ module.exports = class Main {
 		this._eventListener();
 		
 		this.CSS = new CSS(this);
-		// this.wb = new Controls(this);
+		this.wb = new Controls(this);
 	}
 	
 	/**
@@ -40,7 +40,7 @@ module.exports = class Main {
 		
 		// Let's read our stylesheet now.
 		this._executeInRenderer(this.CSS._load, this.CSS.options);
-		// this._executeInRenderer(this.wb._load, this.wb.options);
+		this._executeInRenderer(this.wb._load, this.wb.options);
 	}
 	
 	/**

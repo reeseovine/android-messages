@@ -5,8 +5,8 @@
   "mw_url": "https://messages.google.com/web",
   "main": "index.js",
   "dependencies": {
-    "electron": "^8.2.3",
-    "windowbar": "^1.7.0"
+    "electron": "^8.2.5",
+    "windowbar": "^1.7.2"
   },
   "devDependencies": {},
   "scripts": {
