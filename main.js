@@ -61,7 +61,7 @@ module.exports = class Main {
 			// RENDERER CODE BEGIN
 			function(version){
 				window.ElectronApi = {
-					require: (window.nodeRequire || window.require),
+					require: window.require,
 					version: version
 				};
 			}
