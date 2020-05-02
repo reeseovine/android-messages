@@ -4,8 +4,9 @@ const electron = require('electron');
 const fs = require('fs');
 const path = require('path');
 
-const CSS = require('./css_loader')
-const Controls = require('./controls')
+const CSS = require('./css_loader');
+const Controls = require('./controls');
+const AppTray = require('./tray');
 const pak = require('./package.json');
 
 module.exports = class Main {
@@ -17,6 +18,7 @@ module.exports = class Main {
 		
 		this.CSS = new CSS(this);
 		this.wb = new Controls(this);
+		this.tray = new AppTray(this);
 	}
 	
 	/**

@@ -1,22 +1,44 @@
 const { app, Menu, Tray } = require('electron');
 const path = require('path');
 
-let tray = null;
+module.exports = class AppTray {
+	constructor(main){
+		this.main = main;
+		
+		this.tray = new Tray(path.join(__dirname, 'img', 'message-white.png'));
+		this.updateUnread(0);
+		
+		// Keep tray open unless specifically told to quit
+		this.main.win.on('close', function(event){
+			if(!app.isQuitting){
+				event.preventDefault();
+				this.hide();
+			}
 
-app.on('ready', () => {
-	tray = new Tray(path.join(__dirname, 'img', 'message-white.png'));
-	const contextMenu = Menu.buildFromTemplate([
-		{
-			label: 'Open', click: async () => {
-				app.focus();
-			}
-		},
-		{
-			label: 'Quit', click: async () => {
-				app.quit();
-			}
-		},
-	]);
-	tray.setToolTip('0 unread messages');
-	tray.setContextMenu(contextMenu);
-});
+			return false;
+		});
+	}
+	
+	updateUnread(count){
+		var contextMenu = Menu.buildFromTemplate([
+			{
+				label: count + ' unread message' + (count !== 1 ? 's' : ''),
+				disabled: true
+			},
+			{ type: 'separator' },
+			{
+				label: 'Open', click: async () => {
+					this.main.win.show();
+				}
+			},
+			{
+				label: 'Quit', click: async () => {
+					app.isQuitting = true;
+					app.quit();
+				}
+			},
+		]);
+		this.tray.setContextMenu(contextMenu);
+		this.tray.setToolTip(count + ' unread message' + (count !== 1 ? 's' : ''));
+	}
+}
