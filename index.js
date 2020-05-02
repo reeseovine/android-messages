@@ -1,10 +1,11 @@
+const glasstron = require('glasstron');
+
+
+glasstron.init(); // THIS should be called before we require the BrowserWindow class
 const { app, BrowserWindow } = require('electron');
 // const path = require('path');
 const Main = require('./main.js');
 const pak = require('./package.json');
-
-// const glasstron = require('./glasstron');
-// glasstron.init();
 
 function createWindow(){
 	// Create the browser window.
@@ -16,8 +17,6 @@ function createWindow(){
 		title: 'Android Messages',
 		icon: './img/icon.png',
 		frame: false,
-		transparent: true,
-		backgroundColor: '#00000000',
 		webPreferences: {
 			nodeIntegration: true,
 			enableRemoteModule: true
@@ -25,16 +24,18 @@ function createWindow(){
 		_package: require('./package.json')
 	});
 	
-	// glasstron.update(win, {
-	// 	windows: {
-	// 		blurType: 'acrylic',
-	// 		performanceMode: true
-	// 	},
-	// 	linux: true,
-	// 	macos: {
-	// 		vibrancy: 'fullscreen-ui'
-	// 	}
-	// });
+	glasstron.update({
+		windows: {
+			blurType: 'acrylic',
+			performanceMode: true
+		},
+		linux: {
+			requestBlur: true
+		},
+		macos: {
+			vibrancy: 'fullscreen-ui'
+		}
+	});
 	
 	new Main(win);
 	
@@ -48,7 +49,7 @@ function createWindow(){
 app.allowRendererProcessReuse = true;
 
 app.on('ready', function(){
-	setTimeout(createWindow, 300);
+	createWindow();
 });
 
 // Quit when all windows are closed.

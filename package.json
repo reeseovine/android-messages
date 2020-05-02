@@ -6,6 +6,7 @@
   "main": "index.js",
   "dependencies": {
     "electron": "^8.2.5",
+    "glasstron": "github:AryToNeX/Glasstron",
     "windowbar": "^1.7.2"
   },
   "devDependencies": {},
