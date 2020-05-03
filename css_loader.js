@@ -8,7 +8,7 @@ module.exports = class CSSLoader {
 		this.main = main;
 		this.options = {
 			cssPath: path.join(__dirname, 'style.css')
-		}
+		};
 		this.main._log('CSS module initialized');
 	}
 

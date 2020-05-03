@@ -4,12 +4,12 @@ module.exports = class Controls {
 	constructor(main){
 		this.main = main;
 		this.options = {
-			dark: true,
 			dblClickable: false,
 			draggable: false,
 			fixed: true,
 			tall: true,
-		 	transparent: true };
+		 	transparent: true
+		};
 		this.main._log('Windowbar module initialized');
 	}
 
@@ -25,8 +25,18 @@ module.exports = class Controls {
 			.on('maximize', () => { win.isMaximized() ? win.unmaximize() : win.maximize() })
 			.appendTo(document.body);
 		
-		document.body.className = document.body.className.concat(' wb-' + wb.options.style);
+		document.body.classList.add('wb-' + wb.options.style);
 		
-		return wb;
+		window.darkTimer = function(){
+			var dark = document.body.classList.contains('dark-mode');
+			var wb = document.getElementsByClassName('windowbar')[0];
+			if (dark){
+				wb.classList.add('dark');
+			} else {
+				wb.classList.remove('dark');
+			}
+			setTimeout(window.darkTimer, 1000);
+		}
+		window.darkTimer();
 	}
 }
