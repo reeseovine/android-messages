@@ -8,7 +8,7 @@ module.exports = class AppTray {
 		this.tray = new Tray(path.join(__dirname, 'img', 'message-white.png'));
 		this.updateUnread(0);
 		
-		// Keep tray open unless specifically told to quit
+		// Keep tray open unless explicitly told to quit
 		this.main.win.on('close', function(event){
 			if(!app.isQuitting){
 				event.preventDefault();

@@ -8,7 +8,6 @@ module.exports = class Controls {
 			dblClickable: false,
 			draggable: false,
 			fixed: true,
-			style: 'mac',
 			tall: true,
 		 	transparent: true };
 		this.main._log('Windowbar module initialized');
@@ -16,13 +15,9 @@ module.exports = class Controls {
 
 	// Renderer function
 	_load(options){
-		console.log("windowbar start!");
-
 		const win = ElectronApi.require('electron').remote.getCurrentWindow();
 		const windowbar = ElectronApi.require('windowbar');
 		
-		console.log("windowbar required!");
-				
 		const wb = new windowbar(options)
 			.on('close', () => { win.close() })
 			.on('minimize', () => { win.minimize() })
@@ -31,8 +26,7 @@ module.exports = class Controls {
 			.appendTo(document.body);
 		
 		document.body.className = document.body.className.concat(' wb-' + wb.options.style);
-		return wb;
 		
-		console.log("windowbar inserted!");
+		return wb;
 	}
 }

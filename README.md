@@ -5,3 +5,8 @@ This is an Electron application that wraps the Android Messages Web client for u
 In addition, it also has:
 * Custom CSS injection along with Glasstron, allowing you to make it look how you want it to.
 * Tray icon for displaying notifications even when the main window is closed.
+
+## To do
+
+* Unread count in tray
+* Localization?

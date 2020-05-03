@@ -1,7 +1,17 @@
 {
   "name": "android-messages",
   "version": "0.0.1",
-  "description": "Electron wrapper for Android Messages for Web",
+  "description": "Send and receive text messages on your Android phone using your computer",
+  "keywords": [
+    "sms",
+    "mms",
+    "android",
+    "text",
+    "message",
+    "messaging",
+    "phone",
+    "google"
+  ],
   "mw_url": "https://messages.google.com/web",
   "main": "index.js",
   "dependencies": {
@@ -20,10 +30,13 @@
     "dist": "electron-builder build -mwl"
   },
   "author": "Reese Jacobson <me@katacarbix.xyz> (http://katacarbix.xyz)",
+  "contributors": [
+    "Naomi Calabretta <me@arytonex.pw> (http://arytonex.pw)"
+  ],
   "private": true,
   "build": {
-    "appId": "com.google.android.messagesforweb",
-    "productName": "Google Messages",
+    "appId": "com.katacarbix.androidmessages",
+    "productName": "Android Messages",
     "directories": {
       "output": "dist"
     },
@@ -52,7 +65,7 @@
     },
     "linux": {
       "icon": "img/icon.png",
-      "category": "Internet",
+      "category": "Internet;Network;Chat",
       "target": [
         {
           "target": "AppImage",
