@@ -9,7 +9,7 @@ module.exports = class CSSLoader {
 		this.options = {
 			cssPaths: [
 				path.join(__dirname, 'style.css'),
-				path.join(app.getPath('userData'), 'css', 'style.css')
+				path.join(app.getPath('userData'), 'css', 'user-style.css')
 			]
 		};
 		this.main._log('CSS module initialized');

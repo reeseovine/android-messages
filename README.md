@@ -11,7 +11,6 @@ In addition, it also has:
 ## To do
 
 * Tray icon with dot for notification.
-* Load stylesheets from both app dir and user data.
 * Test on each platform.
 * Ensure updater works.
 
