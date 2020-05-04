@@ -6,8 +6,15 @@ const path = require('path');
 const Main = require('./main.js');
 const pak = require('./package.json');
 
+// Check if an instance is already running
+if (!app.requestSingleInstanceLock()){
+  app.quit()
+}
+
+let win = null;
+
 function createWindow(){
-	var win = new BrowserWindow({
+	win = new BrowserWindow({
 		width: 1200,
 		height: 800,
 		minWidth: 400,
@@ -51,5 +58,14 @@ app.on('activate', function(){
 		createWindow();
 	} else {
 		BrowserWindow.getAllWindows()[0].show();
+	}
+});
+
+app.on('second-instance', (event, commandLine, workingDirectory) => {
+	// Someone tried to run a second instance, we should focus our window.
+	if (win){
+		if (win.isMinimized()) win.restore();
+		win.show();
+		win.focus();
 	}
 });

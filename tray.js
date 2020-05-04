@@ -54,6 +54,7 @@ module.exports = class AppTray {
 			{
 				label: 'Open', click: async () => {
 					this.main.win.show();
+					this.main.win.focus();
 				}
 			},
 			{

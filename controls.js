@@ -7,6 +7,7 @@ module.exports = class Controls {
 			dblClickable: false,
 			draggable: false,
 			fixed: true,
+			style: 'mac',
 			tall: true,
 		 	transparent: true
 		};
