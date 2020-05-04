@@ -41,10 +41,8 @@ module.exports = class CSSLoader {
 					window.customCss[p] = document.createElement('style');
 					document.head.appendChild(window.customCss[p]);
 				}
-				console.log(css);
 				window.customCss[p].innerHTML = css;
 				console.log(`%c[Electron] %cCustom stylesheet loaded!`, 'color:#039be5;font-weight:bold', 'color:inherit;font-weight:normal;');
-				console.dir(window.customCss[p]);
 				
 				if (!window.cssWatchers[i]) {
 					window.cssWatchers[i] = fs.watch(p, { encoding: 'utf-8' },
@@ -53,7 +51,6 @@ module.exports = class CSSLoader {
 							readFile(p).then(newCss => {
 								window.customCss[p].innerHTML = newCss;
 								console.log(`%c[Electron] %cCustom stylesheet reloaded!`, 'color:#039be5;font-weight:bold', 'color:inherit;font-weight:normal;');
-								console.dir(window.customCss[p]);
 							});
 						}
 					});
