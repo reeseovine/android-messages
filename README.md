@@ -10,9 +10,9 @@ In addition, it also has:
 
 ## To do
 
-* Tray icon with dot for notification.
-* Test on each platform.
-* Ensure updater works.
+* Tray icon notification dot
+* Test on each platform
+* Ensure updater works
 
 ### Long-term
 

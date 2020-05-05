@@ -7,7 +7,7 @@ module.exports = class AppTray {
 		this.options = {
 			iconDark: true
 		};
-		this.tray = new Tray(path.join(__dirname, 'img', 'message-white.png'));
+		this.tray = new Tray();
 		// this._updateMenu(0);
 		
 		this._load();
@@ -39,12 +39,13 @@ module.exports = class AppTray {
 		var appTray = this;
 		setTimeout(function(){
 			getCount(appTray);
-		}, 5000);
+		}, 10000);
 	}
 	
 	_updateMenu(count){
-		var unreadStr = count + ' unread conversation' + (count !== 1 ? 's' : '');
+		var image = count > 0 ? 'tray-unread.png' : 'tray.png';
 		
+		var unreadStr = count + ' unread conversation' + (count !== 1 ? 's' : '');
 		var contextMenu = Menu.buildFromTemplate([
 			{
 				label: unreadStr,
@@ -64,6 +65,8 @@ module.exports = class AppTray {
 				}
 			},
 		]);
+		
+		this.tray.setImage(path.join(__dirname, 'img', image));
 		this.tray.setContextMenu(contextMenu);
 		this.tray.setToolTip(unreadStr);
 	}
