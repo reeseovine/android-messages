@@ -35,8 +35,9 @@
   ],
   "private": true,
   "build": {
-    "appId": "com.katacarbix.androidmessages",
-    "productName": "Android Messages",
+    "appId": "com.electron.android-messages",
+    "productName": "android-messages",
+    "files": ["*.js", "style.css", "img/*"],
     "directories": {
       "output": "dist"
     },
@@ -46,21 +47,20 @@
         {
           "target": "msi",
           "arch": [
-            "x64",
-            "ia32"
+            "x64"
           ]
         },
         {
           "target": "zip",
           "arch": [
-            "x64",
-            "ia32"
+            "x64"
           ]
         }
       ]
     },
     "mac": {
       "icon": "img/icon.icns",
+      "category": "public.app-category.social-networking",
       "target": "zip"
     },
     "linux": {
@@ -70,29 +70,25 @@
         {
           "target": "AppImage",
           "arch": [
-            "x64",
-            "ia32"
+            "x64"
           ]
         },
         {
           "target": "deb",
           "arch": [
-            "x64",
-            "ia32"
+            "x64"
           ]
         },
         {
           "target": "rpm",
           "arch": [
-            "x64",
-            "ia32"
+            "x64"
           ]
         },
         {
-          "target": "tar.gz",
+          "target": "snap",
           "arch": [
-            "x64",
-            "ia32"
+            "x64"
           ]
         }
       ]
