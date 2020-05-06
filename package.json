@@ -37,7 +37,11 @@
   "build": {
     "appId": "com.electron.android-messages",
     "productName": "android-messages",
-    "files": ["*.js", "style.css", "img/*"],
+    "files": [
+      "*.js",
+      "style.css",
+      "img/*"
+    ],
     "directories": {
       "output": "dist"
     },

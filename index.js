@@ -29,7 +29,7 @@ function createWindow(){
 		_package: require('./package.json')
 	});
 	
-	glasstron.update({
+	glasstron.update(win, {
 		windows: {
 			blurType: 'acrylic',
 			performanceMode: true
