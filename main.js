@@ -73,7 +73,7 @@ module.exports = class Main {
 	
 	_executeInRenderer(method, ...params){
 		if(method.name.length !== 0)
-			method = method.toString().replace(method.name, "function").replace("function function", "function");
+			method = method.toString().replace(method.name, 'function').replace('function function', 'function');
 		else method = method.toString();
 		return this.win.webContents.executeJavaScript(`(${method})(...${JSON.stringify(params)});`);
 	}

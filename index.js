@@ -1,5 +1,5 @@
 const glasstron = require('glasstron');
-glasstron.init(); // THIS should be called before we require the BrowserWindow class
+glasstron.init(); // this should be called before we require the BrowserWindow class
 
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
@@ -12,6 +12,7 @@ if (!app.requestSingleInstanceLock()){
 }
 
 let win = null;
+let main = null;
 
 function createWindow(){
 	win = new BrowserWindow({
@@ -29,21 +30,25 @@ function createWindow(){
 		_package: require('./package.json')
 	});
 	
-	glasstron.update(win, {
-		windows: {
-			blurType: 'acrylic',
-			performanceMode: true
-		},
-		linux: {
-			requestBlur: true
-		},
-		macos: {
-			vibrancy: 'fullscreen-ui'
-		}
-	});
+	main = new Main(win);
 	
-	new Main(win);
-	
+	try {
+		glasstron.update(win, {
+			windows: {
+				blurType: 'blurbehind',
+				performanceMode: true
+			},
+			linux: {
+				requestBlur: true
+			},
+			macos: {
+				vibrancy: 'fullscreen-ui'
+			}
+		});
+	} catch (e){
+		main._log('Glasstron was unable to blur the window.', 'warn');
+	}
+		
 	win.loadURL(pak.mw_url);
 }
 
