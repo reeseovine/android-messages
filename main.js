@@ -64,7 +64,10 @@ module.exports = class Main {
 			function(version){
 				window.ElectronApi = {
 					require: window.require,
-					version: version
+					version: version,
+					log: function(message, level = 'log'){
+						console[level]('%c[Electron] %c' + message, 'color:#039be5;font-weight:bold', 'color:inherit;font-weight:normal;');
+					}
 				};
 			}
 			// RENDERER CODE END

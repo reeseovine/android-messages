@@ -14,9 +14,11 @@ body.wb-mac .new-chat-header .logo-link {
 body.wb-mac mws-header {
 	padding-left: 97px !important;
 }
-body.wb-win mws-header,
-body.wb-default mws-header {
+body.wb-win mws-header {
 	padding-right: 138px !important;
+}
+body.wb-default mws-header {
+	padding-right: 102px !important;
 }
 
 /* Draggable regions */

@@ -19,6 +19,14 @@ module.exports = class CSSLoader {
 	_load(options){
 		const path = ElectronApi.require('path');
 		const fs = ElectronApi.require('fs');
+		
+		function createFile(path, callback){
+			fs.writeFile(path, `/* Write your custom styles here */\n`, { flag: 'wx' }, err => {
+				if (err) callback(err);
+				this.main._log(`Empty user stylesheet created at ${path}`);
+				callback(false);
+			});
+		}
 
 		function readFile(path, encoding = 'utf-8') {
 			return new Promise((resolve, reject) => {
@@ -42,7 +50,7 @@ module.exports = class CSSLoader {
 					document.head.appendChild(window.customCss[p]);
 				}
 				window.customCss[p].innerHTML = css;
-				console.log(`%c[Electron] %cCustom stylesheet loaded!`, 'color:#039be5;font-weight:bold', 'color:inherit;font-weight:normal;');
+				window.ElectronApi.log(`Stylesheet loaded!`);
 				
 				if (!window.cssWatchers[i]) {
 					window.cssWatchers[i] = fs.watch(p, { encoding: 'utf-8' },
@@ -50,12 +58,12 @@ module.exports = class CSSLoader {
 						if (eventType == 'change') {
 							readFile(p).then(newCss => {
 								window.customCss[p].innerHTML = newCss;
-								console.log(`%c[Electron] %cCustom stylesheet reloaded!`, 'color:#039be5;font-weight:bold', 'color:inherit;font-weight:normal;');
+								window.ElectronApi.log(`Stylesheet reloaded!`);
 							});
 						}
 					});
 				}
-			}).catch((p) => console.warn(`%c[Electron] %cCustom stylesheet not found. Skipping... (${p})`, 'color:#039be5;font-weight:bold', 'color:inherit;font-weight:normal;'));
+			}).catch((p) => window.ElectronApi.log(`Stylesheet not found. (${p})`, 'warn'));
 		}
 	}
 }

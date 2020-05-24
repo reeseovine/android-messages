@@ -10,15 +10,16 @@ In addition, it also has:
 
 ## To do
 
-* Tray icon notification dot
+* Open links in default browser
 * Test on each platform
 * Ensure updater works
 
 ### Long-term
 
 * Preferences window for:
-	* CSS location
 	* Minimize to tray
-	* Tray icon style
 	* Start on login
+	* Toggle notifications
+	* CSS location
+	* Tray icon style
 * Localization?

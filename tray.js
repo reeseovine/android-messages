@@ -18,7 +18,7 @@ module.exports = class AppTray {
 			},
 			{
 				label: 'Quit', click: async () => {
-					app.isQuitting = true;
+					// app.isQuitting = true;
 					app.quit();
 				}
 			},
@@ -27,14 +27,18 @@ module.exports = class AppTray {
 		
 		this._load();
 		
-		// Keep tray open unless explicitly told to quit
+		// Keep tray open unless explicitly told to quit -- feature turned off for now
 		this.main.win.on('close', function(event){
-			if(!app.isQuitting){
-				event.preventDefault();
-				this.hide();
-			}
-
-			return false;
+			app.quit();
+			
+			// if(!app.isQuitting){
+			// 	event.preventDefault();
+			// 	this.hide();
+			// }
+			//
+			// return false;
+			//
+			// app.isQuitting = true;
 		});
 		
 		this.main._log('Tray module initialized');

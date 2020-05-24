@@ -46,7 +46,7 @@ function createWindow(){
 			}
 		});
 	} catch (e){
-		main._log('Glasstron was unable to blur the window.', 'warn');
+		main._log(`Glasstron was unable to blur behind the window.\n${e}`, 'warn');
 	}
 		
 	win.loadURL(pak.mw_url);
