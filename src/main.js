@@ -4,21 +4,21 @@ const electron = require('electron');
 const fs = require('fs');
 const path = require('path');
 
-const CSS = require('./css_loader');
-const Controls = require('./controls');
-const AppTray = require('./tray');
-const pak = require('./package.json');
+const config = require('./config');
+const CSS = require('./modules/css_loader');
+const Windowbar = require('./modules/windowbar');
+const AppTray = require('./modules/tray');
 
 module.exports = class Main {
 	constructor(win){
 		Object.defineProperty(this, 'win', {get: function() { return win; }});
 		
+		this.css = new CSS(this);
+		this.wb = new Windowbar(this);
+		this.tray = new AppTray(this);
+		
 		// Let's register our event listeners now.
 		this._eventListener();
-		
-		this.CSS = new CSS(this);
-		this.wb = new Controls(this);
-		this.tray = new AppTray(this);
 	}
 	
 	/**
@@ -41,8 +41,8 @@ module.exports = class Main {
 		this._exposeApi();
 		
 		// Let's read our stylesheet now.
-		this._executeInRenderer(this.CSS._load, this.CSS.options);
-		this._executeInRenderer(this.wb._load, this.wb.options);
+		this._executeInRenderer(this.css._load, this.css.options);
+		this._executeInRenderer(this.wb._load,  this.wb.options);
 	}
 	
 	/**
@@ -64,14 +64,13 @@ module.exports = class Main {
 			function(version){
 				window.ElectronApi = {
 					require: window.require,
-					version: version,
 					log: function(message, level = 'log'){
 						console[level]('%c[Electron] %c' + message, 'color:#039be5;font-weight:bold', 'color:inherit;font-weight:normal;');
 					}
 				};
 			}
 			// RENDERER CODE END
-		, pak.version);
+		);
 	}
 	
 	_executeInRenderer(method, ...params){

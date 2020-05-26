@@ -17,6 +17,7 @@
   "mw_url": "https://messages.google.com/web",
   "main": "index.js",
   "dependencies": {
+    "electron-store": "^5.1.1",
     "glasstron": "github:AryToNeX/Glasstron",
     "windowbar": "^1.7.2"
   },
@@ -40,15 +41,13 @@
     "appId": "com.electron.android-messages",
     "productName": "Android Messages",
     "files": [
-      "*.js",
-      "style.css",
-      "img/*"
+      "src/**"
     ],
     "directories": {
       "output": "dist"
     },
     "win": {
-      "icon": "img/icon.ico",
+      "icon": "src/img/icon.ico",
       "target": [
         {
           "target": "msi",
@@ -65,12 +64,12 @@
       ]
     },
     "mac": {
-      "icon": "img/icon.icns",
+      "icon": "src/img/icon.icns",
       "category": "public.app-category.social-networking",
       "target": "zip"
     },
     "linux": {
-      "icon": "img/icon.png",
+      "icon": "src/img/icon.png",
       "category": "Internet;Network;Chat",
       "target": [
         {

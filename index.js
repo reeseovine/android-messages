@@ -3,7 +3,8 @@ glasstron.init(); // this should be called before we require the BrowserWindow c
 
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-const Main = require('./main.js');
+
+const Main = require('./src/main');
 const pak = require('./package.json');
 
 // Check if an instance is already running
@@ -21,7 +22,7 @@ function createWindow(){
 		minWidth: 400,
 		minHeight: 300,
 		title: 'Android Messages',
-		icon: path.join(__dirname, 'img', 'icon.png'),
+		icon: path.join(__dirname, 'src', 'img', 'icon.png'),
 		frame: false,
 		webPreferences: {
 			nodeIntegration: true,
@@ -46,7 +47,7 @@ function createWindow(){
 			}
 		});
 	} catch (e){
-		main._log(`Glasstron was unable to blur behind the window.\n${e}`, 'warn');
+		main._log(`Glasstron was unable to blur the window.\n${e}`, 'warn');
 	}
 		
 	win.loadURL(pak.mw_url);
