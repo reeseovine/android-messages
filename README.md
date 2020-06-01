@@ -10,9 +10,9 @@ In addition, it also has:
 
 ## To do
 
-* Open links in default browser
 * Test on each platform
 * Ensure updater works
+* ~~Open links in default browser~~
 
 ### Long-term
 

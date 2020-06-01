@@ -24,7 +24,7 @@ module.exports = class Main {
 	/**
 	 * handy method to log directly to DevTools
 	 */
-	_log(message, level = 'log'){
+	log(message, level = 'log'){
 		this._executeInRenderer(
 			// RENDERER CODE BEGIN
 			function(message, level){
@@ -41,8 +41,8 @@ module.exports = class Main {
 		this._exposeApi();
 		
 		// Let's read our stylesheet now.
-		this._executeInRenderer(this.css._load, this.css.options);
-		this._executeInRenderer(this.wb._load,  this.wb.options);
+		this._executeInRenderer(this.css.load, this.css.options);
+		this._executeInRenderer(this.wb.load, this.wb.options);
 	}
 	
 	/**

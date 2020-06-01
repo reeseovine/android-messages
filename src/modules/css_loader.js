@@ -8,15 +8,15 @@ module.exports = class CSSLoader {
 		this.main = main;
 		this.options = {
 			cssPaths: [
-				path.join(__dirname, 'style.css'),
+				path.join(__dirname, '..', 'style.css'),
 				path.join(app.getPath('userData'), 'css', 'user-style.css')
 			]
 		};
-		this.main._log('CSS module initialized');
+		this.main.log('CSS module initialized');
 	}
 
 	// Renderer function
-	_load(options){
+	load(options){
 		const path = ElectronApi.require('path');
 		const fs = ElectronApi.require('fs');
 		

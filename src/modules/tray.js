@@ -25,7 +25,7 @@ module.exports = class AppTray {
 		]);
 		this.tray.setContextMenu(contextMenu);
 		
-		this._load();
+		this.load();
 		
 		// Keep tray open unless explicitly told to quit -- feature turned off for now
 		this.main.win.on('close', function(event){
@@ -41,10 +41,10 @@ module.exports = class AppTray {
 			// app.isQuitting = true;
 		});
 		
-		this.main._log('Tray module initialized');
+		this.main.log('Tray module initialized');
 	}
 	
-	_load(){
+	load(){
 		function getCount(appTray){
 			appTray.main._executeInRenderer(function(){ return document.querySelectorAll('.text-content.unread').length; })
 			.then((count) => {

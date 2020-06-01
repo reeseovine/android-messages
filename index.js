@@ -1,7 +1,7 @@
 const glasstron = require('glasstron');
 glasstron.init(); // this should be called before we require the BrowserWindow class
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, shell } = require('electron');
 const path = require('path');
 
 const Main = require('./src/main');
@@ -51,6 +51,17 @@ function createWindow(){
 	}
 		
 	win.loadURL(pak.mw_url);
+    
+    // Link handling
+    var handleRedirect = (e, url) => {
+    	if(url != win.webContents.getURL()){
+    		e.preventDefault();
+    		shell.openExternal(url);
+    	}
+    }
+
+    win.webContents.on('will-navigate', handleRedirect);
+    win.webContents.on('new-window', handleRedirect);
 }
 
 app.allowRendererProcessReuse = true;

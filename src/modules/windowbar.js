@@ -10,11 +10,11 @@ module.exports = class WindowBar {
 			tall: true,
 		 	transparent: true
 		};
-		this.main._log('Windowbar module initialized');
+		this.main.log('Windowbar module initialized');
 	}
 
 	// Renderer function
-	_load(options){
+	load(options){
 		const win = ElectronApi.require('electron').remote.getCurrentWindow();
 		const windowbar = ElectronApi.require('windowbar');
 		
