@@ -25,7 +25,7 @@ module.exports = class AppTray {
 				}
 			},
 			{
-				label: 'Auto Start',
+				label: 'Start on login',
 				type: 'checkbox',
 				enabled: /^(darwin|win32|linux)$/.test(process.platform),
 				checked: this.__isAutostartEnabled(),
