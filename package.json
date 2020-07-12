@@ -41,7 +41,9 @@
     "appId": "com.electron.android-messages",
     "productName": "Android Messages",
     "files": [
-      "src/**"
+      "src/**",
+      "index.js"
+      
     ],
     "directories": {
       "output": "dist"
