@@ -14,7 +14,7 @@ module.exports = class Main {
 		Object.defineProperty(this, 'win', {get: function() { return win; }});
 		
 		this.css = new CSS(this);
-		this.wb = new Windowbar(this);
+		if (config.showWindowbar) this.wb = new Windowbar(this);
 		this.tray = new AppTray(this);
 		
 		// Let's register our event listeners now.
@@ -42,7 +42,7 @@ module.exports = class Main {
 		
 		// Let's read our stylesheet now.
 		this._executeInRenderer(this.css.load, this.css.options);
-		this._executeInRenderer(this.wb.load, this.wb.options);
+		if (config.showWindowbar) this._executeInRenderer(this.wb.load, this.wb.options);
 	}
 	
 	/**

@@ -7,7 +7,7 @@ module.exports = class AppTray {
 		this.options = {
 			iconDark: true
 		};
-		this.tray = new Tray(path.join(__dirname, '..', 'img', 'tray.png'));
+		this.tray = new Tray(path.join(__dirname, '..', '..', 'icons', 'tray.png'));
 		this._updateMenu(0);
 		var contextMenu = Menu.buildFromTemplate([
 			{
@@ -65,7 +65,7 @@ module.exports = class AppTray {
 		var image = count > 0 ? 'tray-unread.png' : 'tray.png';
 		var unreadStr = count + ' unread conversation' + (count !== 1 ? 's' : '');
 		
-		this.tray.setImage(path.join(__dirname, '..', 'img', image));
+		this.tray.setImage(path.join(__dirname, '..', '..', 'icons', image));
 		this.tray.setToolTip(unreadStr);
 	}
 }

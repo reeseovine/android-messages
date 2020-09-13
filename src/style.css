@@ -1,3 +1,9 @@
+html,
+body {
+	background-color: transparent !important;
+	overflow: hidden !important;
+}
+
 body.wb-mac .new-chat-header {
 	margin-left: 48px !important;
 	text-align: center;
@@ -21,10 +27,18 @@ body.wb-default mws-header {
 	padding-right: 102px !important;
 }
 
-/* Draggable regions */
-* {
-	-webkit-user-select: none;
+/* Selectable text */
+body {
+	user-select: none;
 }
+.text-msg {
+	user-select: text;
+}
+iframe {
+	user-select: auto;
+}
+
+/* Draggable regions */
 .new-chat-header,
 mw-main-landing,
 mws-header {

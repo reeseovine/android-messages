@@ -1,0 +1,73 @@
+// android-messages default transparent theme
+
+// VARIABLES
+@main-background-light: #fff;
+@main-background-dark: #111;
+
+@sidebar-background-light: rgba(255,255,255, 0.8);
+@sidebar-background-dark: rgba(0,0,0, 0.8);
+
+@sidebar-selection-light: #fff;
+@sidebar-selection-dark: #fff;
+
+@menu-background: #fff;
+
+
+// STYLE RULES
+body {
+    // Light mode
+    &:not(.dark-mode) {
+        mw-main-nav {
+        	background-color: @sidebar-background-light !important;
+        	border: none !important;
+        }
+        
+        .list-item.selected {
+        	background-color: @sidebar-selection-light !important;
+        }
+        
+        mw-main-landing,
+        mw-conversation-container,
+        .container,
+        mws-header {
+        	background-color: @main-background-light !important;
+        }
+        
+        mws-header {
+        	border-bottom: 1px solid #ddd !important;
+        	box-shadow: none !important;
+        }
+    }
+    
+    // Dark mode
+    .dark-mode {
+        mw-main-nav {
+        	background-color: @sidebar-background-dark !important;
+        }
+        
+        mw-main-landing,
+        mw-conversation-container,
+        .container,
+        mws-header {
+        	background-color: @main-background-dark !important;
+        }
+        
+        mws-header {
+        	border-bottom: 1px solid #333 !important;
+        	box-shadow: none !important;
+        }
+    }
+    
+    // Always
+    .main-nav-header.box-shadow {
+        box-shadow: none !important;
+    }
+    
+    .input-background {
+        background: none !important;
+    }
+    
+    .mat-menu-panel {
+        background-color: @menu-background !important;
+    }
+}

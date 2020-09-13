@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = class WindowBar {
+module.exports = class Windowbar {
 	constructor(main){
 		this.main = main;
 		this.options = {

@@ -1,0 +1,8 @@
+{
+	"showNotifications": "true",
+	"minimizeToTray": "true",
+	"startOnLogin": "false",
+	"theme": "default",
+	"trayIconStyle": "dark",
+	"windowControlStyle": ""
+}
