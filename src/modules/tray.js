@@ -1,5 +1,7 @@
 const { app, Menu, Tray } = require('electron');
 const path = require('path');
+const fs = require("fs")
+const os = require("os")
 
 module.exports = class AppTray {
 	constructor(main){
@@ -22,6 +24,19 @@ module.exports = class AppTray {
 					app.quit();
 				}
 			},
+			{
+				label: 'Start on login',
+				type: 'checkbox',
+				enabled: /^(darwin|win32|linux)$/.test(process.platform),
+				checked: this.__isAutostartEnabled(),
+				click: async (item) => {
+					if (item.checked) {
+						this._enableAutostart()
+					} else {
+						this.__disableAutostart()
+					}
+				},
+			}
 		]);
 		this.tray.setContextMenu(contextMenu);
 		
@@ -67,5 +82,48 @@ module.exports = class AppTray {
 		
 		this.tray.setImage(path.join(__dirname, '..', '..', 'icons', image));
 		this.tray.setToolTip(unreadStr);
+	}
+
+	_enableAutostart() {
+		if (process.platform === "linux") {
+			const appPath = (process.env.APPIMAGE ? process.env.APPIMAGE : process.execPath)
+
+			const data = `[Desktop Entry]
+Type=Application 
+Version=1.0
+Name=Android Message
+Comment=Android Message startup script
+Exec='${appPath}'
+StartupNotify=false
+Terminal=false`
+
+			fs.writeFile(path.join(os.homedir(), ".config", "autostart", "android-message.desktop"), data, (error) => {
+				if (error) console.error(error)
+			})
+
+		} else {
+			app.setLoginItemSettings({
+				openAtLogin: true
+			})
+		}
+	}
+	__disableAutostart() {
+		if (process.platform === "linux") {
+			fs.unlink(path.join(os.homedir(), ".config", "autostart", "android-message.desktop"), (error) => {
+				if (error) console.error(error)
+			})
+		} else {
+			app.setLoginItemSettings({
+				openAtLogin: false
+			})
+
+		}
+	}
+	__isAutostartEnabled() {
+		if (process.platform === "linux") {
+			return fs.existsSync(path.join(os.homedir(), ".config", "autostart", "android-message.desktop"))
+		} else {
+			return app.getLoginItemSettings().openAtLogin
+		}
 	}
 }
